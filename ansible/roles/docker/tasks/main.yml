@@ -3,10 +3,11 @@
   yum:
     name: docker
     state: latest
-  notify:
-    - start docker
+  become: true
 
 - name: Add {{remote_user}} to docker group
   user:
-    name: {{remote_user}}
-    group: docker
+    name: "{{remote_user}}"
+    groups: docker
+    append: yes
+  become: true

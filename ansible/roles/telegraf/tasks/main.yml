@@ -4,6 +4,11 @@
     src: telegraf.conf.j2
     dest: /home/{{remote_user}}/telegraf.conf
 
+- name: Install Docker-Py
+  pip:
+   name: docker-py
+  become: true
+
 - name: Start Telegraf
   docker_container:
     name: telegraf

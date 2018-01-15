@@ -1,5 +1,5 @@
 [agent]
-  hostname = "{{hostvars['nodes'].hostname}}"
+  hostname = "{{hostname}}"
 
 [[inputs.cpu]]
   percpu = false
@@ -13,5 +13,5 @@
 [[inputs.mem]]
 
 [[outputs.influxdb]]
-  urls = ["http://localhost:8086"]
+  urls = ["http://{{influxdb_ip}}:8086"]
   database = "infrastructure"

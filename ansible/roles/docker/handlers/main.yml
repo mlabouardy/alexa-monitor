@@ -3,3 +3,4 @@
   service:
     name: docker
     state: started
+  become: true

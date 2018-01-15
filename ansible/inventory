@@ -1,2 +1,6 @@
 [nodes]
 NODE_IP hostname=NODE_NAME
+
+[nodes:vars]
+remote_user=ec2-user
+influxdb_ip=localhost
