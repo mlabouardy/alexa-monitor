@@ -1,0 +1,12 @@
+---
+- name: Install Docker CE
+  yum:
+    name: docker
+    state: latest
+  notify:
+    - start docker
+
+- name: Add {{remote_user}} to docker group
+  user:
+    name: {{remote_user}}
+    group: docker

@@ -1,0 +1,7 @@
+---
+- name: Install Telegraf Agent
+  hosts: nodes
+  remote_user: ec2-user
+  roles:
+    - docker
+    - telegraf

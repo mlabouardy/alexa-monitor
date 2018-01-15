@@ -4,11 +4,12 @@ provider "aws" {
   access_key = "${var.access_key}"
 }
 
-
 resource "aws_instance" "default" {
   count = "${length(var.hostnames)}"
-  ami = "${lookup(var.ami, var.region)}"
+  ami = "${lookup(var.amis, var.region)}"
   instance_type = "${var.instance_type}"
+  key_name = "${var.key_name}"
+  user_data = "${file("setup.sh")}"
 
   tags {
     Name = "${element(var.hostnames,count.index)}"

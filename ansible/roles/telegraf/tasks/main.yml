@@ -1,0 +1,14 @@
+---
+- name: Generate configuration file
+  template:
+    src: telegraf.conf.j2
+    dest: /home/{{remote_user}}/telegraf.conf
+
+- name: Start Telegraf
+  docker_container:
+    name: telegraf
+    image: telegraf:1.3
+    state: started
+    restart_policy: always
+    volumes:
+      - "/home/{{remote_user}}/telegraf.conf:/etc/telegraf/telegraf.conf"

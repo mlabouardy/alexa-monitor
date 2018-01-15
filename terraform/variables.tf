@@ -1,6 +1,7 @@
 variable "region" {}
 variable "access_key" {}
 variable "secret_key" {}
+variable "key_name" {}
 
 variable "amis" {
   description = "Amazon Linux Image 2017.09.1"
