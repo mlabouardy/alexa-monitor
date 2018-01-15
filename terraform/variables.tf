@@ -12,7 +12,7 @@ variable "amis" {
     "us-west-1" = "ami-a51f27c5"
     "us-west-2" = "ami-bf4193c7"
     "eu-west-1" = "ami-1a962263"
-    "eu-west-2" = "ami-e7d6c983	"
+    "eu-west-2" = "ami-e7d6c983"
     "eu-central-1" = "ami-bf2ba8d0"
     "ap-south-1" = "ami-d5c18eba"
     "ap-northeast-1" = "ami-da9e2cbc"
