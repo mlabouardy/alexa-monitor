@@ -1,4 +1,4 @@
-# Alexa Skill to monitor AWS Infrastructure
+# AWS Infrastructure Real-Time Monitoring
 
 ## Terraform
 
