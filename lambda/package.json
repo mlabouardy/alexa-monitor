@@ -1,0 +1,11 @@
+{
+  "name": "alexa-monitor",
+  "version": "1.0.0",
+  "description": "Alexa Skill to monitor AWS infrastructure",
+  "main": "index.js",
+  "author": "Mohamed Labouardy",
+  "license": "MIT",
+  "dependencies": {
+    "influx": "^5.0.7"
+  }
+}
