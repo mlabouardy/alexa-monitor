@@ -19,20 +19,20 @@ exports.handler = (event, context, callback) => {
 
         switch(event.request.intent.name){
           case "GetSystemUsage":
-            var city = event.request.intent.slots.Language.value
+            var city = event.request.intent.slots.City.value
             var metric = event.request.intent.slots.Metric.value
-            switch(metric) {
-              case "CPU":
+            switch(metric.toLowerCase()) {
+              case "cpu":
                 db.getCPU(city, function(data){
                   context.succeed(buildResponse(data))
                 })
                 break;
-              case "MEMORY":
+              case "memory":
                 db.getMemory(city, function(data){
                   context.succeed(buildResponse(data))
                 })
                 break;
-              case "DISK":
+              case "disk":
                 db.getDisk(city, function(data){
                   context.succeed(buildResponse(data))
                 })

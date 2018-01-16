@@ -8,7 +8,7 @@ function MetricsDB(){
 }
 
 bytesToSize = (bytes) => {
-   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+   var sizes = ['Bytes', 'Kilobyte', 'MegaByte', 'GigaByte', 'TeraByte']
    if (bytes == 0) return '0 Byte'
    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
@@ -17,13 +17,12 @@ bytesToSize = (bytes) => {
 MetricsDB.prototype.getCPU = function(machine, callback){
   this.influx.query(`
       SELECT last(usage_system) AS system, last(usage_user) AS "user"
-      FROM cpu_vm
+      FROM cpu
       WHERE time > now() - 5m AND host='${machine}'
     `).then(result => {
-      var timestamp = result[0].time._nanoISO
       var system_usage = result[0].system.toFixed(2)
       var user_usage = result[0].user.toFixed(2)
-      callback(`CPU Usage is ${system_usage}% ${user_usage}% at ${timestamp}`)
+      callback(`System usage is ${system_usage} percent & user usage is ${user_usage} percent`)
   }).catch(err => {
       callback(`Cannot get cpu usage values`)
   })
@@ -32,13 +31,12 @@ MetricsDB.prototype.getCPU = function(machine, callback){
 MetricsDB.prototype.getDisk = function(machine, callback){
   this.influx.query(`
       SELECT last(free) AS free, last(used) AS "used"
-      FROM disk_vm
+      FROM disk
       WHERE time > now() - 5m AND host='${machine}'
     `).then(result => {
-      var timestamp = result[0].time._nanoISO
       var free_disk = result[0].free
       var used_disk = result[0].used
-      callback(`Disk Usage is ${bytesToSize(free_disk)} ${bytesToSize(used_disk)} at ${timestamp}`)
+      callback(`Free disk is ${bytesToSize(free_disk)} & used disk is ${bytesToSize(used_disk)}`)
   }).catch(err => {
       callback(`Cannot get disk usage values`)
   })
@@ -47,13 +45,12 @@ MetricsDB.prototype.getDisk = function(machine, callback){
 MetricsDB.prototype.getMemory = function(machine, callback){
   this.influx.query(`
       SELECT last(free) AS free, last(used) AS "used"
-      FROM mem_vm
+      FROM mem
       WHERE time > now() - 5m AND host='${machine}'
     `).then(result => {
-      var timestamp = result[0].time._nanoISO
       var free_memory = result[0].free
       var used_memory = result[0].used
-      callback(`Memory Usage is ${bytesToSize(free_memory)} ${bytesToSize(used_memory)} at ${timestamp}`)
+      callback(`Free memory is ${bytesToSize(free_memory)} & used memory is ${bytesToSize(used_memory)}`)
   }).catch(err => {
       callback(`Cannot get memory usage values`)
   })
