@@ -1,0 +1,17 @@
+{
+  "intents" : [
+    {
+      "intent" : "GetSystemUsage",
+      "slots" : [
+        {
+          "name" : "Metric",
+          "type" : "TYPE_OF_METRICS"
+        },
+        {
+          "name" : "City",
+          "type" : "LIST_OF_CITIES"
+        }
+      ]
+    }
+  ]
+}
