@@ -22,3 +22,5 @@ ansible-playbook -i inventory playbook.yml --private-key=key.pem
   * INFLUXDB_DATABASE
 
 ## Alexa Skill
+
+[Real-Time Infrastructure Monitoring with Amazon Echo](http://www.blog.labouardy.com/real-time-infrastructure-monitoring-amazon-echo/)
